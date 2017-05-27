@@ -1,0 +1,13 @@
+{
+  "name": "programming-lang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "language.js",
+  "scripts": {
+    "start": "node language test.lang",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
