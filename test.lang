@@ -1,1 +1,2 @@
 print Bob "test"
+print test "blah"

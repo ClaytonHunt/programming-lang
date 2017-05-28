@@ -1,36 +1,40 @@
 const fs = require('fs');
-const lexer = require('./lexer');
-const parser = require('./parser');
+const Lexer = require('./lexer/lexer').Lexer;
+const Parser = require('./parser').Parser;
 
-let script = process.argv[2];
+let filename = process.argv[2];
 
-const openFile = (filename, callback) => {
-    "use strict";
+class Compiler {
+  constructor(filename) {
+    this._filename = filename;
+  }
 
+  openFile(filename, callback) {
     fs.readFile(filename, 'utf8', (err, contents) => {
-        if(err) {
-            console.error(`\x1b[31mError: ${err.message}\x1b[0m`);
-            return;
-        }
+      if (err) {
+        console.error(`\x1b[31mError: ${err.message}\x1b[0m`);
+        return;
+      }
 
-        callback(contents);
+      callback(contents);
     });
-};
+  }
 
-const run = () => {
-    "use strict";
+  run() {
+    this.openFile(filename, (data) => {
+      let lex = new Lexer(data);
+      let parser = new Parser();
 
-    openFile(script, (data) => {
-        let lex = lexer(data);
+      while (lex.hasNextToken()) {
+        let token = lex.nextToken();
 
-        while(lex.hasNextToken()) {
-            let token = lex.nextToken();
+        console.log(token.token, '\t|', token.type);
+      }
 
-            console.log(token.getToken(), '\t|', token.getType());
-        }
-
-        //let ast = parser.run(tokens);
+      //let ast = parser.run(tokens);
     });
-};
+  }
+}
 
-run();
+let compiler = new Compiler(filename);
+compiler.run();
