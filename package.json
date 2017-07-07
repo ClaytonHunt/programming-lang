@@ -4,7 +4,8 @@
   "description": "",
   "main": "language.js",
   "scripts": {
-    "start": "node language test.lang",
+    "start": "node language",
+    "example": "node language ./examples/hello-world.lang",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

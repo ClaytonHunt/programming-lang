@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Lexer = require('./lexer/lexer').Lexer;
-const Parser = require('./parser').Parser;
+const Parser = require('./parser/parser').Parser;
 
 let filename = process.argv[2];
 
@@ -25,11 +25,16 @@ class Compiler {
       let lex = new Lexer(data);
       let parser = new Parser();
 
-      while (lex.hasNextToken()) {
-        let token = lex.nextToken();
+      try {
+          while (lex.hasNextToken()) {
+              let token = lex.nextToken();
 
-        console.log(token.token, '\t|', token.type);
+              console.log(token.token, '\t|', token.type);
+          }
+      } catch(err) {
+          console.error(`\x1b[31mError: ${err.message}\x1b[0m`);
       }
+
 
       //let ast = parser.run(tokens);
     });

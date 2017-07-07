@@ -13,7 +13,7 @@ class Lexer {
     this._tokenData.push(new TokenData(/^(-)?[0-9]+/, tokenType.integerLiteral));
     this._tokenData.push(new TokenData(/^".*"/, tokenType.stringLiteral));
 
-    for (let t in ["^=", "^\\(", "^\\)", "^\\.", "^\\,"]) {
+    for (let t of [/^=/, /^\(/, /^\)/, /^\./, /^,/]) {
       this._tokenData.push(new TokenData(new RegExp(t), tokenType.token));
     }
   }
