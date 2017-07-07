@@ -29,7 +29,7 @@ class Compiler {
           while (lex.hasNextToken()) {
               let token = lex.nextToken();
 
-              console.log(token.token, '\t|', token.type);
+              console.log(token.token, '\t|', token.Type);
           }
       } catch(err) {
           console.error(`\x1b[31mError: ${err.message}\x1b[0m`);

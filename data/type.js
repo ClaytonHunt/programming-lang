@@ -11,5 +11,5 @@ const type = {
 };
 
 module.exports = {
-    type: type
+    Type: type
 };

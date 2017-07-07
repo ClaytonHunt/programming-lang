@@ -4,11 +4,7 @@ class ClassParser extends Parser {
     constructor() {
         super();
 
-        this.pattern = /class [a-zA-Z][a-z-A-Z0-9]*/
-    }
-
-    shouldParse(line) {
-        return this.pattern.test(line);
+        this.pattern = /class [a-zA-Z][a-z-A-Z0-9]*/;
     }
 
     parse(parentBlock, lexer) {

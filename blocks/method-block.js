@@ -1,16 +1,23 @@
 let Block = require('./block').Block;
 
 class Method extends Block {
-    constructor(parentBlock) {
+    constructor(parentBlock, name, type, params) {
         super(parentBlock);
 
         this._name = "";
-        this._type;
-        this._params;
-        this._returnValue;
+        this._type = type;
+        this._params = params;
     }
 
     run() {
-        // TODO: fill this in
+        this.invoke();
+    }
+
+    invoke(...values) {
+        // Invoke the method with the supplied values.
     }
 }
+
+module.exports = {
+    Method: Method
+};

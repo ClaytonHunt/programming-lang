@@ -37,10 +37,10 @@ class Lexer {
         let token = td.pattern.exec(this._data);
         this._data = this._data.substring(token[0].length).trim();
 
-        if (td.type === tokenType.stringLiteral) {
+        if (td.Type === tokenType.stringLiteral) {
           return this._lastToken = new Token(token[0].substring(1, token[0].length - 1), tokenType.stringLiteral);
         } else {
-          return this._lastToken = new Token(token[0], td.type);
+          return this._lastToken = new Token(token[0], td.Type);
         }
       }
     }
